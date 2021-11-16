@@ -19,11 +19,6 @@ contract FundMe {
         owner.transfer(address(this).balance);
     }
 
-    function withdrawWithCall() payable onlyOwner public {
-        (bool sent,) = owner.call{value: address(this).balance}("");
-        require(sent, "Failed to send Ether");
-    }
-
     function deposit() payable public {
         require(msg.value >= 5, "Value send me be greater then 5 wei");
 
